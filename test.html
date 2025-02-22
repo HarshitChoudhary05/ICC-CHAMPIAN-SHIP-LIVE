@@ -6,51 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>  
     <style>   
-        body { margin: 0; }   
+        body { margin: 0px; }   
         .jwplayer { position: absolute !important; }   
-        .jwplayer.jw-flag-aspect-mode { min-height: 100%; max-height: 100%; } 
+        .jwplayer.jw-flag-aspect-mode { min-height: 100%; max-height: 100%; }   
     </style>  
     <script>
         // Disable right-click
         document.addEventListener('contextmenu', event => event.preventDefault());
 
-        // Prevent copying text
+        // Prevent text copy
         document.addEventListener('copy', event => {
             event.preventDefault();
             alert("Copy mat kar chitye, yha kuch nhi hain!");
         });
 
-        // Detect Developer Tools
-        function detectDevTools() {
-            setInterval(() => {
-                if (window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100) {
-                    document.body.innerHTML = "<h2 style='color: red; text-align: center;'>Developer Tools Detected! Access Denied.</h2>";
-                }
-            }, 500);
-        }
+        // Encode the file URL
+        const encodedFile = btoa("https://jcevents.jiocinema.com:443/bpk-tv/JC_Sports18_1HD/JCHLS/hdntl=exp=1740296821~acl=%2f*~id=7b9c16515a5d47dc46cf1ffc9e97ed05~data=hdntl~hmac=c2aa978088215ba51e6df045f76424f51b0c6bf70c51e681fe75caafc9bce789/JC_Sports18_1HD-audio_108038_eng=108000-video=3728000.m3u8");
 
-        detectDevTools();
+        // Detect Developer Tools
+        let devToolsOpened = false;
+        setInterval(() => {
+            if (window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100) {
+                if (!devToolsOpened) {
+                    devToolsOpened = true;
+                    stopPlayer();
+                }
+            }
+        }, 500);
+
+        function stopPlayer() {
+            document.body.innerHTML = `<h2 style='color: red; text-align: center;'>Developer Tools Detected! Access Denied.</h2>`;
+        }
     </script>
 </head>  
 <body>  
     <div id="jwplayerDiv"></div>  
 
     <script type="text/javascript">    
-        // Obfuscate and decode the file URL
-        const encodedURL = "aHR0cHM6Ly9qY2V2ZW50cy5qaW9jaW5lbWEuY29tOjQ0My9icGstdHYvSkNfU3BvcnRzMThfMUhEL0pDSExTL2hkbmRsPWV4cD0xNzQwMjk2ODIxfmFjbD0lMkYqfmNyPTc3YjljMTY1MTVhNWQ0N2RjNDZjZjFmZmM5ZTk3ZWQwNX5kYXRhPWhkbmRsfmg9YzJhYTk3ODA4ODIxNWJhNTFlNmRmMDQ1Zjc2NDI0ZjUxYjBjNmJmNzBjNTFlNjgxZmU3NWNhYWZjOWJjZTc4OQ==";
+        let decodedFile = atob(encodedFile);
 
-        function decodeBase64(str) {
-            return atob(str);
+        if (devToolsOpened) {
+            decodedFile = "Copy mat kar chitye, yha kuch nhi hain!";
         }
 
-        const fileURL = decodeBase64(encodedURL);
-
         jwplayer("jwplayerDiv").setup({
-            "playlist": [{ "file": fileURL }],
+            "playlist": [
+                { "file": decodedFile }
+            ],
             "autostart": true,
-            "fullscreen": true,
-            "mute": false     
+            "fullscreen": true, 
+            "mute": false
         });
-    </script>  
+    </script>
 </body>
 </html>
