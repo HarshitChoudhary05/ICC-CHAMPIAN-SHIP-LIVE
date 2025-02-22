@@ -1,7 +1,7 @@
 <html lang="en">  
 <head>  
     <meta charset="UTF-8">  
-    <title>Star Sports 1 Live Hindi HD</title>  
+    <title>Live Hindi HD</title>  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>  
@@ -10,20 +10,23 @@
         .jwplayer { position: absolute !important; }   
         .jwplayer.jw-flag-aspect-mode { min-height: 100%; max-height: 100%; }   
     </style>  
-</head>  
-<body>  
-    <div id="jwplayerDiv"></div>  
+    <script>
+        // Disable Right-Click & Copying
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('copy', event => {
+            event.preventDefault();
+            alert("Copy mat kar chitye, yha kuch nhi hain!");
+        });
 
-    <script type="text/javascript">    
-        // Encode the streaming URL
-        const encodedFile = btoa("https://jcevents.jiocinema.com:443/bpk-tv/JC_Sports18_1HD/JCHLS/hdntl=exp=1740296821~acl=%2f*~id=7b9c16515a5d47dc46cf1ffc9e97ed05~data=hdntl~hmac=c2aa978088215ba51e6df045f76424f51b0c6bf70c51e681fe75caafc9bce789/JC_Sports18_1HD-audio_108038_eng=108000-video=3728000.m3u8");
+        // Encode the File URL
+        const encodedFile = "aHR0cHM6Ly9qY2V2ZW50cy5qaW9jaW5lbWEuY29tL2Jway10di9KQ19TcG9ydHMxOF8xSEQvSkNITFMvaGRudGw9ZXhwPTE3NDAzMTIyNDh+YWNsPSUyRioudmlkZW8ubTN1OH5pZD1hYWY1NDllYzUxOTg0Yzg2YjMyZGQ3ZGUzZTEzMzRjN35kYXRhPWhkbnRsfmhtYWM9NWM1NDM1YWZmZmIzNTU2OWRhODVmNWViMjc2NTg3NTAyZjVjNGM3Njg4MDRiOThiNjk1ZGIwNmUxMDBmMGQzYi9pbmRleC5tM3U4";  
 
         let isDevToolsOpen = false;
 
-        // Function to detect Developer Tools
+        // Function to Detect Developer Tools
         function detectDevTools() {
             let start = performance.now();
-            debugger;
+            debugger; // Triggers when DevTools is open
             let end = performance.now();
             if (end - start > 100) {
                 isDevToolsOpen = true;
@@ -31,33 +34,35 @@
             }
         }
 
-        // Check every second
+        // Check DevTools Every 1 Second
         setInterval(detectDevTools, 1000);
 
         function stopPlayer() {
             document.body.innerHTML = `<h2 style='color: red; text-align: center; margin-top: 20%; font-size: 24px;'>Copy mat kar chitye, yha kuch nhi hain!</h2>`;
         }
+    </script>
+</head>  
+<body>  
+    <div id="jwplayerDiv"></div>  
 
-        // Prevent Right-Click & Text Copy
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('copy', event => {
-            event.preventDefault();
-            alert("Copy mat kar chitye, yha kuch nhi hain!");
-        });
-
-        // Load the Player
+    <script type="text/javascript">    
+        // Decode URL Before Use
         let decodedFile = atob(encodedFile);
 
-        if (!isDevToolsOpen) {
-            jwplayer("jwplayerDiv").setup({
-                "playlist": [
-                    { "file": decodedFile }
-                ],
-                "autostart": true,
-                "fullscreen": true, 
-                "mute": false
-            });
+        // If Developer Tools Are Open, Stop Playback
+        if (isDevToolsOpen) {
+            decodedFile = "Copy mat kar chitye, yha kuch nhi hain!";
         }
+
+        // Initialize JW Player
+        jwplayer("jwplayerDiv").setup({
+            "playlist": [
+                { "file": decodedFile }
+            ],
+            "autostart": true,
+            "fullscreen": true, 
+            "mute": false
+        });
     </script>
 </body>
 </html>
