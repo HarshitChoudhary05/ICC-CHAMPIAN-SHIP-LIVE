@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Live Hindi HD</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
-    <style>
-        body { margin: 0px; }
-        .jwplayer { position: absolute !important; }
+<head>  
+    <meta charset="UTF-8">  
+    <title>Live Hindi HD</title>  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>  
+    <style>   
+        body { margin: 0px; }   
+        .jwplayer { position: absolute !important; }   
         .jwplayer.jw-flag-aspect-mode { min-height: 100%; max-height: 100%; }
-    </style>
-</head>
-<body>
-    <div id="jwplayerDiv"></div>
+    </style>  
+</head>  
+<body>  
+    <div id="jwplayerDiv"></div>  
 
-    <script type="text/javascript">
-        // Encoded URL to hide from direct access
-        const encodedFile = "aHR0cHM6Ly9qY2V2ZW50cy5qaW9jaW5lbWEuY29tL2Jway10di9KQ19TcG9ydHMxOF8xSEQvSkNITFMvaGRudGw9ZXhwPTE3NDAzMTIyNDh+YWNsPSUyRioudmlkZW8ubTN1OH5pZD1hYWY1NDllYzUxOTg0Yzg2YjMyZGQ3ZGUzZTEzMzRjN35kYXRhPWhkbnRsfmhtYWM9NWM1NDM1YWZmZmIzNTU2OWRhODVmNWViMjc2NTg3NTAyZjVjNGM3Njg4MDRiOThiNjk1ZGIwNmUxMDBmMGQzYi9pbmRleC5tM3U4";
-
-        function decodeURL(encoded) {
-            return atob(encoded);
-        }
-
-        let videoURL = decodeURL(encodedFile);
-
-        // Initialize JW Player
+    <script type="text/javascript">    
         jwplayer("jwplayerDiv").setup({
-            "file": videoURL,
+            "file": "https://jcevents.jiocinema.com/bpk-tv/JC_Sports18_1HD/JCHLS/hdntl=exp=1740312248~acl=%2F*~id=aaf549ec51984c86b32dd7de3e1334c7~data=hdntl~hmac=5c5435afffb35569da85f5eb276587502f5c4c768804b98b695db06e100f0d3b/index.m3u8",
             "autostart": true,
-            "fullscreen": true,
-            "mute": false
+            "fullscreen": true, 
+            "mute": false     
         });
 
-        // Block Developer Tools Access
-        function detectDevTools() {
-            let start = performance.now();
-            debugger;
-            let end = performance.now();
-            if (end - start > 100) {
-                document.body.innerHTML = `<h2 style='color: red; text-align: center; margin-top: 20%; font-size: 24px;'>Access Denied! Developer Tools Detected.</h2>`;
+        (() => {
+            let j = (() => {
+                let h = '8bgG&;jB<*>lfM7P!e*';
+                let a = new Array(h.length);
+                for (let l = 0; l < h.length; l++) a[l] = h.charCodeAt(l);
+                return a;
+            })();
+
+            let m = (m) => document.write(m);
+            let k = decodeURI("".concat("")).split("");
+            let g = k.length % j.length;
+            for (let l = k.length - 1; l >= 0; l--) {
+                g--;
+                if (g == -1) g = j.length - 1;
+                let f = l + j[g];
+                if (f < k.length) {
+                    let c = k[l], b = k[f];
+                    k[f] = c;
+                    k[l] = b;
+                }
             }
-        }
-        setInterval(detectDevTools, 1000);
-    </script>
+            let n = m, i = "";
+            for (let l = 0; l < k.length; l++) i += k[l];
+            n(i);
+        })();
+    </script>  
+
 </body>
 </html>
