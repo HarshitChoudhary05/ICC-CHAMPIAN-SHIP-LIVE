@@ -1,0 +1,56 @@
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Star Sports 1 Live Hindi HD</title>  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>  
+    <style>   
+        body { margin: 0; }   
+        .jwplayer { position: absolute !important; }   
+        .jwplayer.jw-flag-aspect-mode { min-height: 100%; max-height: 100%; } 
+    </style>  
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Prevent copying text
+        document.addEventListener('copy', event => {
+            event.preventDefault();
+            alert("Copy mat kar chitye, yha kuch nhi hain!");
+        });
+
+        // Detect Developer Tools
+        function detectDevTools() {
+            setInterval(() => {
+                if (window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100) {
+                    document.body.innerHTML = "<h2 style='color: red; text-align: center;'>Developer Tools Detected! Access Denied.</h2>";
+                }
+            }, 500);
+        }
+
+        detectDevTools();
+    </script>
+</head>  
+<body>  
+    <div id="jwplayerDiv"></div>  
+
+    <script type="text/javascript">    
+        // Obfuscate and decode the file URL
+        const encodedURL = "aHR0cHM6Ly9qY2V2ZW50cy5qaW9jaW5lbWEuY29tOjQ0My9icGstdHYvSkNfU3BvcnRzMThfMUhEL0pDSExTL2hkbmRsPWV4cD0xNzQwMjk2ODIxfmFjbD0lMkYqfmNyPTc3YjljMTY1MTVhNWQ0N2RjNDZjZjFmZmM5ZTk3ZWQwNX5kYXRhPWhkbmRsfmg9YzJhYTk3ODA4ODIxNWJhNTFlNmRmMDQ1Zjc2NDI0ZjUxYjBjNmJmNzBjNTFlNjgxZmU3NWNhYWZjOWJjZTc4OQ==";
+
+        function decodeBase64(str) {
+            return atob(str);
+        }
+
+        const fileURL = decodeBase64(encodedURL);
+
+        jwplayer("jwplayerDiv").setup({
+            "playlist": [{ "file": fileURL }],
+            "autostart": true,
+            "fullscreen": true,
+            "mute": false     
+        });
+    </script>  
+</body>
+</html>
