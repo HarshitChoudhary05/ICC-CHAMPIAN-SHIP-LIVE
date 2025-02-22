@@ -18,7 +18,7 @@
             alert("Copy mat kar chitye, yha kuch nhi hain!");
         });
 
-        // Encode the File URL
+        // Encode Video URL (Base64)
         const encodedFile = "aHR0cHM6Ly9qY2V2ZW50cy5qaW9jaW5lbWEuY29tL2Jway10di9KQ19TcG9ydHMxOF8xSEQvSkNITFMvaGRudGw9ZXhwPTE3NDAzMTIyNDh+YWNsPSUyRioudmlkZW8ubTN1OH5pZD1hYWY1NDllYzUxOTg0Yzg2YjMyZGQ3ZGUzZTEzMzRjN35kYXRhPWhkbnRsfmhtYWM9NWM1NDM1YWZmZmIzNTU2OWRhODVmNWViMjc2NTg3NTAyZjVjNGM3Njg4MDRiOThiNjk1ZGIwNmUxMDBmMGQzYi9pbmRleC5tM3U4";  
 
         let isDevToolsOpen = false;
@@ -47,18 +47,20 @@
 
     <script type="text/javascript">    
         // Decode URL Before Use
-        let decodedFile = atob(encodedFile);
+        function decodeURL(encoded) {
+            return atob(encoded);
+        }
+
+        let decodedFile = decodeURL(encodedFile);
 
         // If Developer Tools Are Open, Stop Playback
         if (isDevToolsOpen) {
-            decodedFile = "Copy mat kar chitye, yha kuch nhi hain!";
+            decodedFile = "";
         }
 
         // Initialize JW Player
         jwplayer("jwplayerDiv").setup({
-            "playlist": [
-                { "file": decodedFile }
-            ],
+            "file": decodedFile,
             "autostart": true,
             "fullscreen": true, 
             "mute": false
