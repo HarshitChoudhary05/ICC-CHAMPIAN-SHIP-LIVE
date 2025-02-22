@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Hindi HD</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+    <style>
+        body { margin: 0px; }
+        .jwplayer { position: absolute !important; }
+        .jwplayer.jw-flag-aspect-mode { min-height: 100%; max-height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="jwplayerDiv"></div>
+
+    <script type="text/javascript">
+        // Encoded URL to hide from direct access
+        const encodedFile = "aHR0cHM6Ly9qY2V2ZW50cy5qaW9jaW5lbWEuY29tL2Jway10di9KQ19TcG9ydHMxOF8xSEQvSkNITFMvaGRudGw9ZXhwPTE3NDAzMTIyNDh+YWNsPSUyRioudmlkZW8ubTN1OH5pZD1hYWY1NDllYzUxOTg0Yzg2YjMyZGQ3ZGUzZTEzMzRjN35kYXRhPWhkbnRsfmhtYWM9NWM1NDM1YWZmZmIzNTU2OWRhODVmNWViMjc2NTg3NTAyZjVjNGM3Njg4MDRiOThiNjk1ZGIwNmUxMDBmMGQzYi9pbmRleC5tM3U4";
+
+        function decodeURL(encoded) {
+            return atob(encoded);
+        }
+
+        let videoURL = decodeURL(encodedFile);
+
+        // Initialize JW Player
+        jwplayer("jwplayerDiv").setup({
+            "file": videoURL,
+            "autostart": true,
+            "fullscreen": true,
+            "mute": false
+        });
+
+        // Block Developer Tools Access
+        function detectDevTools() {
+            let start = performance.now();
+            debugger;
+            let end = performance.now();
+            if (end - start > 100) {
+                document.body.innerHTML = `<h2 style='color: red; text-align: center; margin-top: 20%; font-size: 24px;'>Access Denied! Developer Tools Detected.</h2>`;
+            }
+        }
+        setInterval(detectDevTools, 1000);
+    </script>
+</body>
+</html>
